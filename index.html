@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Fathima 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+:root{
+  --bg1:#ff9a9e;
+  --bg2:#fad0c4;
+  --card:#ffffffee;
+  --text:#444;
+  --accent:#ff4d6d;
+}
+
+body.dark{
+  --bg1:#0f2027;
+  --bg2:#203a43;
+  --card:#1b1b1bee;
+  --text:#e6e6e6;
+  --accent:#ff8fb3;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  overflow:hidden;
+  transition:background .6s ease;
+}
+
+/* ambient particles */
+.particle{
+  position:fixed;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:rgba(255,255,255,.25);
+  animation:floatUp linear infinite;
+  pointer-events:none;
+}
+@keyframes floatUp{
+  from{transform:translateY(0);opacity:0}
+  10%{opacity:.6}
+  to{transform:translateY(-110vh);opacity:0}
+}
+
+/* theme toggle */
+.toggle{
+  position:fixed;
+  top:16px;
+  right:16px;
+  background:var(--card);
+  border-radius:999px;
+  padding:8px 12px;
+  font-size:14px;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(0,0,0,.15);
+  user-select:none;
+}
+
+.card{
+  background:var(--card);
+  border-radius:32px;
+  max-width:420px;
+  width:100%;
+  padding:36px 26px 28px;
+  text-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,.25);
+  animation:cardIn .7s ease;
+  transition:filter .5s ease, background .6s ease;
+}
+.card.blur{filter:blur(6px)}
+
+@keyframes cardIn{
+  from{opacity:0;transform:scale(.92) translateY(20px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+
+h1{
+  margin:0;
+  font-size:clamp(22px,6vw,32px);
+  color:var(--accent);
+}
+
+.name{
+  margin-top:8px;
+  font-size:22px;
+  font-weight:700;
+  color:var(--accent);
+  animation:pulse 2.4s infinite;
+}
+@keyframes pulse{50%{transform:scale(1.08)}}
+
+.greeting{
+  margin-top:8px;
+  font-size:14px;
+  color:var(--text);
+}
+
+.heart{
+  font-size:72px;
+  margin:18px 0 20px;
+  animation:beat 1.6s infinite;
+}
+@keyframes beat{50%{transform:scale(1.2)}}
+
+.quote{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-size:clamp(22px,5.5vw,26px);
+  line-height:1.85;
+  letter-spacing:.35px;
+  color:var(--text);
+  min-height:110px;
+  animation:softReveal .9s ease forwards;
+}
+.cursor{
+  display:inline-block;
+  width:2px;
+  background:var(--accent);
+  animation:blink 1s infinite;
+}
+@keyframes blink{50%{opacity:0}}
+
+.countdown{
+  margin-top:18px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--accent);
+}
+
+.buttons{
+  display:none;
+  margin-top:26px;
+  gap:14px;
+  justify-content:center;
+}
+button{
+  min-width:120px;
+  padding:13px 28px;
+  font-size:15px;
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+}
+#yes{background:var(--accent);color:#fff}
+#no{background:#ffe6eb;color:#b0124c;position:relative}
+
+.creator{
+  margin-top:22px;
+  font-size:11px;
+  color:#aaa;
+  font-style:italic;
+}
+
+/* LOCK SCREEN */
+.lock{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(6px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+}
+.lock.fadeOut{
+  animation:pageAway .6s ease forwards;
+}
+@keyframes pageAway{
+  to{opacity:0;transform:translateX(60px)}
+}
+
+.lock-card{
+  background:linear-gradient(135deg,var(--accent),#ff9db8);
+  color:#fff;
+  border-radius:26px;
+  padding:28px 26px;
+  width:90%;
+  max-width:340px;
+  text-align:left;
+  animation:lockIn .6s ease;
+  box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+@keyframes lockIn{
+  from{opacity:0;transform:scale(.85)}
+  to{opacity:1;transform:scale(1)}
+}
+
+.lock-time{
+  font-size:28px;
+  font-weight:700;
+}
+.lock-name{
+  font-size:14px;
+  opacity:.9;
+  margin-bottom:14px;
+}
+.lock-msg{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-size:clamp(24px,6vw,28px);
+  line-height:1.8;
+  letter-spacing:.4px;
+  font-weight:500;
+  animation:softReveal 1s ease forwards;
+}
+
+@keyframes softReveal{
+  from{
+    opacity:0;
+    transform:translateY(6px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="toggle" id="themeToggle">🌙</div>
+
+<div class="card" id="card">
+  <h1>Will you be my Valentine?</h1>
+  <div class="name">Fathima 🌸</div>
+  <div class="greeting" id="greeting"></div>
+
+  <div class="heart">❤️</div>
+
+  <div class="quote" id="quote"></div>
+
+  <div class="countdown" id="countdown"></div>
+
+  <div class="buttons" id="buttons">
+    <button id="yes">Yes 💕</button>
+    <button id="no">No 😏</button>
+  </div>
+
+  <div class="creator">crafted with care by Ajmal</div>
+</div>
+
+<div class="lock" id="lock">
+  <div class="lock-card">
+    <div class="lock-time" id="lockTime"></div>
+    <div class="lock-name">From Ajmal 💖</div>
+    <div class="lock-msg">
+      Some choices change your entire day.<br>
+      You just changed mine.
+    </div>
+  </div>
+</div>
+
+<audio id="song" preload="auto">
+  <source src="Pranayanila Full Video Song  HD  Teja Bhai and Family Movie Song  REMASTERED.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* ambient particles */
+for(let i=0;i<18;i++){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.style.left=Math.random()*100+"vw";
+  p.style.bottom=Math.random()*100+"vh";
+  p.style.animationDuration=(6+Math.random()*6)+"s";
+  document.body.appendChild(p);
+}
+
+/* theme toggle */
+const toggle=document.getElementById("themeToggle");
+const savedTheme=localStorage.getItem("theme");
+if(savedTheme==="dark"){document.body.classList.add("dark");toggle.textContent="☀️"}
+
+toggle.onclick=()=>{
+  document.body.classList.toggle("dark");
+  const dark=document.body.classList.contains("dark");
+  toggle.textContent=dark?"☀️":"🌙";
+  localStorage.setItem("theme",dark?"dark":"light");
+};
+
+/* Greeting */
+const hr=new Date().getHours();
+greeting.innerText=
+  hr<12?"Good Morning, Fathima 🌅":
+  hr<16?"Good Afternoon, Fathima ☀️":
+  hr<20?"Good Evening, Fathima 🌙":
+  "Good Night, Fathima 🌌";
+
+/* Typing quote */
+const text="I don't need all of your time; I just need the time you choose to give.\nIt’s always the best part of my day.";
+let i=0,timer;
+function startTyping(){
+  quote.innerHTML="";
+  buttons.style.display="none";
+  i=0;
+  clearTimeout(timer);
+  (function type(){
+    if(i<text.length){
+      quote.innerHTML=text.slice(0,++i)+'<span class="cursor"></span>';
+      timer=setTimeout(type,45);
+    }else{
+      quote.innerHTML=text;
+      buttons.style.display="flex";
+    }
+  })();
+}
+startTyping();
+
+/* Countdown */
+const target=new Date("2026-02-14T00:00:00+05:30");
+setInterval(()=>{
+  const d=target-new Date();
+  if(d<=0){countdown.innerText="❤️ Happy Valentine’s Day ❤️";return;}
+  const days=Math.floor(d/86400000);
+  const hrs=Math.floor(d/3600000)%24;
+  const mins=Math.floor(d/60000)%60;
+  const secs=Math.floor(d/1000)%60;
+  countdown.innerText=`⏳ ${days}d ${hrs}h ${mins}m ${secs}s to Valentine’s Day`;
+},1000);
+
+/* Buttons */
+no.onclick=()=>no.style.transform=`translate(${Math.random()*160-80}px,${Math.random()*120-60}px)`;
+
+let clock;
+window.addEventListener("DOMContentLoaded", () => {
+  const song = document.getElementById("song");
+  song.volume = 0.35;
+
+  yes.onclick = () => {
+    song.play();
+    card.classList.add("blur");
+    lock.style.display = "flex";
+    clock = setInterval(() => {
+      lockTime.innerText = new Date().toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }, 1000);
+  };
+});
+
+/* Tap to return */
+lock.onclick=()=>{
+  lock.classList.add("fadeOut");
+  clearInterval(clock);
+  setTimeout(()=>{
+    lock.style.display="none";
+    lock.classList.remove("fadeOut");
+    card.classList.remove("blur");
+    startTyping();
+  },600);
+};
+</script>
+
+</body>
+</html>
